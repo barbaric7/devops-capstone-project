@@ -1,10 +1,13 @@
+
 name: CI Build
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build:
@@ -29,4 +32,7 @@ jobs:
         run: flake8 service tests --ignore=E501
 
       - name: Run tests
-        run: nosetests
+        run: |
+          python -c "import collections, collections.abc; collections.Callable = collections.abc.Callable"
+          nosetests
+
