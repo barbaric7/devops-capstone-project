@@ -1,5 +1,7 @@
 # DevOps Capstone Project
 
+![Build Status](https://github.com/barbaric7/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)
+
 ## Project: devops-capstone-project
 
 This project develops a customer accounts microservice for an e-commerce application.
