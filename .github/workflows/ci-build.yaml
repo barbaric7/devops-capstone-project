@@ -12,6 +12,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: python:3.9-slim
 
     services:
       postgres:
@@ -29,16 +31,11 @@ jobs:
           --health-retries 5
 
     env:
-      DATABASE_URI: postgresql://postgres:postgres@localhost:5432/postgres
+      DATABASE_URI: postgresql://postgres:postgres@postgres:5432/postgres
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
 
       - name: Install dependencies
         run: |
