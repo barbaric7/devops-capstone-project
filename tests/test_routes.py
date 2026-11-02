@@ -125,6 +125,21 @@ class TestAccountService(TestCase):
 
     # ADD YOUR TEST CASES HERE ...
 
+    def test_security_headers(self):
+        """It should return security headers"""
+        response = self.client.get("/")
+        self.assertIn("X-Frame-Options", response.headers)
+        self.assertIn("X-Content-Type-Options", response.headers)
+        self.assertIn("Content-Security-Policy", response.headers)
+
+    def test_cors_headers(self):
+        """It should return a CORS header"""
+        response = self.client.get(
+            "/",
+            headers={"Origin": "http://localhost:3000"}
+        )
+        self.assertIn("Access-Control-Allow-Origin", response.headers)
+
     def test_read_an_account(self):
         """It should Read an Account"""
         account = AccountFactory()
