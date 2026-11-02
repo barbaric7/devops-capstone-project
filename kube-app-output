@@ -1,0 +1,9 @@
+=== KUBERNETES APPLICATION OUTPUT ===
+HTTP/1.1 200 OK
+Server: gunicorn
+Date: Mon, 02 Nov 2026 17:49:50 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 52
+
+{"name":"Account REST API Service","version":"1.0"}

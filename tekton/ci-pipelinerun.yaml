@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  name: ci-pipeline-run-1
+spec:
+  pipelineRef:
+    name: ci-pipeline
+  params:
+    - name: repo-url
+      value: https://github.com/barbaric7/devops-capstone-project
+    - name: revision
+      value: main
+  workspaces:
+    - name: shared-workspace
+      persistentVolumeClaim:
+        claimName: pipelinerun-pvc

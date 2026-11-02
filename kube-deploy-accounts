@@ -1,0 +1,29 @@
+=== DEPLOYMENTS ===
+NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
+account-service         1/1     1            1           30m
+openshift-web-console   2/2     2            2           61m
+postgres-db             1/1     1            1           17m
+
+=== PODS ===
+NAME                                     READY   STATUS    RESTARTS   AGE
+account-service-f7965dc49-fxjl9          1/1     Running   0          3m50s
+openshift-web-console-7d8859dbc7-64mgn   2/2     Running   0          61m
+openshift-web-console-7d8859dbc7-m9x5k   2/2     Running   0          61m
+postgres-db-784dfc6c99-xtbhf             1/1     Running   0          10m
+
+=== REPLICASETS ===
+NAME                               DESIRED   CURRENT   READY   AGE
+account-service-6fbcf644d          0         0         0       7m39s
+account-service-7c6f56f7b8         0         0         0       30m
+account-service-b8bb78dbd          0         0         0       7m39s
+account-service-f7965dc49          1         1         1       3m51s
+openshift-web-console-7d8859dbc7   2         2         2       61m
+postgres-db-58b56454               0         0         0       17m
+postgres-db-6b79467bbf             0         0         0       10m
+postgres-db-784dfc6c99             1         1         1       10m
+
+=== SERVICES ===
+NAME                    TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+account-service         ClusterIP   172.21.151.147   <none>        8080/TCP   2m59s
+openshift-web-console   ClusterIP   172.21.47.91     <none>        8000/TCP   61m
+postgres-db             ClusterIP   172.21.234.153   <none>        5432/TCP   17m

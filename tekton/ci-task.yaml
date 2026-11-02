@@ -1,0 +1,33 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: ci-checks
+spec:
+  workspaces:
+    - name: source
+  steps:
+    - name: lint-and-test
+      image: python:3.11-slim
+      workingDir: $(workspaces.source.path)
+      env:
+        - name: DATABASE_HOST
+          value: postgres-db
+        - name: DATABASE_URI
+          value: postgresql://postgres:postgres@postgres-db:5432/postgres
+      script: |
+        #!/bin/bash
+        set -e
+
+        echo "=== Installing dependencies ==="
+        grep -v '^psycopg2-binary==' requirements.txt > /tmp/requirements-ci.txt
+        pip install -r /tmp/requirements-ci.txt
+        pip install --only-binary=:all: psycopg2-binary==2.9.10
+        pip install flake8 nose
+
+        echo "=== Running Flake8 ==="
+        flake8 service tests --ignore=E501
+
+        echo "=== Running Nose tests ==="
+        python -c "import collections, collections.abc; collections.Callable = collections.abc.Callable; import nose; nose.run()"
+
+        echo "=== CI CHECKS PASSED ==="
