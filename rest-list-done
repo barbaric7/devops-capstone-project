@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Server: gunicorn
+Date: Mon, 02 Nov 2026 18:40:54 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 135
+
+[{"address":"Pune","date_joined":"2026-11-02","email":"finaltest@example.com","id":2,"name":"Final Test","phone_number":"9999999999"}]
