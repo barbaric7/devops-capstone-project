@@ -9,6 +9,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+RUN useradd --create-home appuser && chown -R appuser:appuser /app
+
+USER appuser
+
 ENV PORT=8080
 
 EXPOSE 8080
